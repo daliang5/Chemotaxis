@@ -1,37 +1,28 @@
  //declare bacteria variables here   
  Bacteria[] bob;
- int size = 30;
- boolean alive = true;
  void setup()   
  {     
  	 size(500,500); 
+   background(255);
    bob = new Bacteria[10];
     for(int i =0; i < bob.length;i++)
     {
       bob[i]=new Bacteria();
     }
-    
-    
  }   
  void draw()   
  { 
+   background(255);
+   for(int i =0; i < bob.length;i++){
+     bob[i].move();       
+     bob[i].show();
+   }  
    if(get(mouseX,mouseY) != color(255))
      {
-     //alive = false;
        background(255);
-     text("You lost",300,450);
-     
+       text("You lost",300,450);
+       noLoop();
      }
-   for(int i =0; i < bob.length;i++){
-     if(alive == true)
-     {
-       bob[i].show();
-       bob[i].move();
-     }
-     
-   }  
-   
-   
  }
  
  class Bacteria    
@@ -39,15 +30,13 @@
    int myX, myY, colir;
    Bacteria()
    {
-     myX  = (int)(Math.random()*100);
-     myY = (int)(Math.random()*100);
-     
+     myX = myY = (int)(Math.random()*20);
      colir = color((int)(Math.random()*255),(int)(Math.random()*254),(int)(Math.random()*254));
    }
    void show()
    {
      fill(colir);
-     rect(myX,myY,size,size);
+     rect(myX,myY,(int)(Math.random()*380),(int)(Math.random()*380));
    }
    void move()
    {
